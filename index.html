@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instagram Story Maker</title>
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-color: #b21e51;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+header h1 {
+  font-family: 'Lobster', cursive;
+position : fixed ;
+top : 60px;
+  font-size: 64px;
+  margin-top:10px;
+  color: #ffffff;
+  margin: 0;
+}
+.p_btn {
+border: none;
+  border-radius: 10px;
+position : fixed ;
+top : 200px;
+height : 100px;
+right : 0px;
+font-size : 45px;
+color : white ;
+font-family: 'Montserrat', sans-serif;
+width : 30%;
+background-color : #F4B400;
+cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.s_btn {
+border: none;
+  border-radius: 10px;
+position : fixed ;
+top : 200px;
+height : 100px;
+left : 0px;
+font-size : 45px;
+color : white ;
+font-family: 'Montserrat', sans-serif;
+width : 50%;
+background-color : #4285F4;
+cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.canvas-container {
+margin-top:350px;
+  padding: 0 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+background-color: #ffffff;
+}
+.canvas_c {
+background-color: #b21e51;
+padding: 0px 0px;
+}
+.n_btn {
+border: none;
+  border-radius: 10px;
+position : fixed ;
+bottom : 20px;
+left : 0px;
+height : 100px;
+font-size : 50px;
+font-family: 'Montserrat', sans-serif;
+color : white;
+width : 30%;
+background-color : #DB4437;
+cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.d_btn {
+border: none;
+  border-radius: 10px;
+position : fixed ;
+bottom : 20px;
+height : 100px;
+right : 0px;
+font-size : 50px;
+color : white ;
+font-family: 'Montserrat', sans-serif;
+width : 60%;
+background-color : #0F9D58;
+cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.c_picker {
+position:fixed ;
+bottom : 300px;
+right : 0px;
+width : 100px;
+height : 100px;
+}
+.m_btn {
+background-color : #b21e51;
+position:fixed ;
+top : 400px;
+right : 0px;
+width : 100px;
+height : 100px;
+}
+</style>
+</head>
+<body>
+  <header>
+    <h1>Insta Story Maker</h1>
+  </header>
+  
+  <div class="canvas-container">
+    <canvas id = "canvas_id" class="canvas_c"></canvas>
+  </div>
+ <button class = "m_btn" onclick="window.location.href='https://w3docs.com';"> </button>   
+
+ <button class = "p_btn" onclick="window.location.href='https://w3docs.com';">Post ( 1 : 1 )  </button>   
+<button class = "s_btn" onclick="window.location.href='https://w3docs.com';">Story ( 9 : 16 )  </button>
+
+<input class = "c_picker" id="favcolor" type="color"/>
+
+<button class = "n_btn" onclick="window.location.href='https://w3docs.com';">NEW  </button>
+<button class = "d_btn"  id="download-btn">DOWNLOAD
+</button>
+  
+    <script>
+
+const screenWidth = window.innerWidth;
+const screenHeight = window.innerHeight;
+
+const img_height = screenHeight - 500;
+const img_width =Math.round( img_height * 0.5625);
+const font_size =Math.round(  img_width / 10);
+const download_btn_top = screenHeight -500 + 100 + 20 + 40 ;
+url = "https://picsum.photos/" + img_width +"/" + img_height + "/?random=1";
+ const canvas = document.getElementById("canvas_id");
+const ctx = canvas.getContext("2d");
+
+      // Load image from URL
+function loadImage() {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          img.addEventListener("load", () => resolve(img));
+          img.addEventListener("error", reject);
+          img.setAttribute("crossOrigin", "anonymous"); // needed for CORS enabled images
+          img.src = url;
+        });
+      }
+
+function draw_image ( img ) {
+canvas.width = img.width;
+  canvas.height = img.height;
+  ctx.drawImage(img, 0, 0);
+}
+
+      // Draw image and text on canvas
+function draw_text(text , c_color) {
+  const start_x = Math.round ( font_size / 1.2);
+  ctx.fillStyle = c_color;
+  ctx.font = font_size+"px 'Sans-Serif', Arial";
+
+  const maxLineWidth = img_width- 80; // leave 10px margin on each side
+  const words = text.split(" ");
+  let line = "";
+  let y = font_size + 200  ; // starting y position
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    const testLine = line + " " + word;
+    const testWidth = ctx.measureText(testLine).width;
+    if (testWidth > maxLineWidth) {
+      ctx.fillText(line, start_x ,  y);
+      line = word;
+      y += font_size + 30; // add 30px for line height
+    } else {
+      line = testLine;
+    }
+  }
+  ctx.fillText(line, start_x, y); // draw last line
+}
+
+
+      // Download image with text
+function downloadCanvas() {
+        const link = document.createElement("a");
+        link.download = "image.png";
+        link.href = canvas.toDataURL();
+        link.click();
+      }
+
+function rgbToHex(r, g, b) {
+  return "#" + (1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1);
+}
+
+
+var color_input = document.getElementById("favcolor");
+
+
+color_input.addEventListener("input", function(){
+  color_pick = color_input.value; 
+  draw_text( quote , color_pick );
+}, false);
+
+
+let quoteTextArray = [];
+var quote = "";
+function load_quotes() {
+  const url = 'https://vtactech.github.io/iqxapptest/quotes.json';
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      quoteTextArray = data.map(quote => quote.quoteText);
+return quoteTextArray;
+    })
+    .catch(error => {
+      console.error('There was a problem with the API request:', error);
+    });
+}
+
+async function get_quote () {
+    
+let k = 0;
+//while ( k == 0 ) {
+await load_quotes();
+const rand = Math.floor(Math.random() * 5000);
+quote = quoteTextArray[rand];
+//}
+}
+
+
+async function exec_this () {
+const img = await loadImage();
+draw_image ( img );
+color_pick = color_input.value; 
+await get_quote();
+draw_text( quote , color_pick );
+}
+exec_this();
+
+      const downloadButton = document.getElementById("download-btn");
+      downloadButton.addEventListener("click", downloadCanvas);
+    </script>
+  </body>
+</html>
