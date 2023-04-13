@@ -135,7 +135,7 @@ height : 100px;
   </div>
  <button class = "m_btn" onclick="window.location.href='https://w3docs.com';"> </button>   
 
- <button class = "p_btn" onclick="window.location.href='https://w3docs.com';">Post ( 1 : 1 )  </button>   
+ <button class = "p_btn" onclick="window.location.href='https://vtactech.github.io/iqxapptest/createpost.html';">Post ( 1 : 1 )  </button>   
 <button class = "s_btn" onclick="window.location.href='https://w3docs.com';">Story ( 9 : 16 )  </button>
 
 <input class = "c_picker" id="favcolor" type="color"/>
@@ -178,7 +178,8 @@ canvas.width = img.width;
 function draw_text(text , c_color) {
   const start_x = Math.round ( font_size / 1.2);
   ctx.fillStyle = c_color;
-  ctx.font = font_size+"px 'Sans-Serif', Arial";
+ctx.font = font_size+"px  'Titillium Web', sans-serif";
+ctx.fontWeight = font_size *10;
 
   const maxLineWidth = img_width- 80; // leave 10px margin on each side
   const words = text.split(" ");
