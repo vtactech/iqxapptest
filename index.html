@@ -184,7 +184,7 @@ ctx.fontWeight = font_size *10;
   const maxLineWidth = img_width- 80; // leave 10px margin on each side
   const words = text.split(" ");
   let line = "";
-  let y = font_size + 200  ; // starting y position
+  let y = Math.round ( img_height / 3 );  ; // starting y position
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     const testLine = line + " " + word;
@@ -251,7 +251,7 @@ await load_quotes();
 const rand = Math.floor(Math.random() * 5000);
 quote = quoteTextArray[rand];
 var quote_split = quote.split("");
-if ( quote_split.length > 80 ) {
+if ( quote_split.length < 80 ) {
 k = 1;
 }
 }
