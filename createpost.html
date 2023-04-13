@@ -152,7 +152,7 @@ const screenHeight = window.innerHeight;
 var  img_height = screenHeight - 500;
 const img_width =Math.round( img_height * 0.5625);
 img_height = img_width;
-const font_size =Math.round(  img_width / 10);
+const font_size =Math.round(  img_width / 13);
 const download_btn_top = screenHeight -500 + 100 + 20 + 40 ;
 url = "https://picsum.photos/" + img_width +"/" + img_height + "/?random=1";
  const canvas = document.getElementById("canvas_id");
@@ -185,7 +185,7 @@ ctx.fontWeight = font_size *10;
   const maxLineWidth = img_width- 80; // leave 10px margin on each side
   const words = text.split(" ");
   let line = "";
-  let y = font_size + 200  ; // starting y position
+    let y = Math.round ( img_height / 3 ); // starting y position
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
     const testLine = line + " " + word;
