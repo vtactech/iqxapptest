@@ -3,8 +3,8 @@
 <head>
   <title>Instagram Story Maker</title>
   <meta name = “theme-color” content = “#942c51”>
-  <meta content='#942c51' name='theme-color'/> 
-
+  <meta content='#942c51' name='theme-color'/>
+<link rel="manifest" href="./manifest.json"> 
 
   <style>
 * {
@@ -149,7 +149,9 @@ height : 100px;
 </button>
   
     <script>
-
+ if ('serviceWorker' in navigator) {
+   navigator.serviceWorker.register("/pwabuilder-sw.js");
+}
 const screenWidth = window.innerWidth;
 const screenHeight = window.innerHeight;
 
