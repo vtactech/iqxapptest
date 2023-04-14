@@ -3,17 +3,15 @@
   "description": "Quote maker for Instagram , Facebook , WhatsApp and other social medias in one go",
   "dir": "ltr",
   "display": "standalone",
-  "name": "DQ D: Destroyer Quote maker for Instagram",
+  "name": "DQ: Destroyer Quote maker for Instagram",
   "orientation": "portrait",
   "scope": "/",
   "short_name": "DQ : Destroyer",
   "start_url": "https://vtactech.github.io/iqxapptest/",
   "theme_color": "#942c51",
-  "categories": [],
-  "screenshots": [],
   "icons": [
 {
-      "src": "https://vtactech.github.io/vtacapp/icon.png",
+      "src": "https://vtactech.github.io/iqxapptest/icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose" : "any"
