@@ -1,12 +1,12 @@
 {
   "background_color": "#ffffff",
-  "description": "Quote maker for Instagram , Facebook , WhatsApp and other social medias in one go",
+  "description": "Arth Quote maker for Instagram , Facebook , WhatsApp and other social medias in one go",
   "dir": "ltr",
   "display": "standalone",
-  "name": "DQ: Destroyer Quote maker for Instagram",
+  "name": "Arth Quote maker for Instagram",
   "orientation": "portrait",
   "scope": "/",
-  "short_name": "DQ : Destroyer",
+  "short_name": "Arth",
   "start_url": "https://vtactech.github.io/iqxapptest/",
   "theme_color": "#942c51",
   "icons": [
