@@ -1,9 +1,9 @@
 {
   "background_color": "#ffffff",
-  "description": "Arth Quote maker for Instagram , Facebook , WhatsApp and other social medias in one go",
+  "description": "Sparkle Story Quote maker for Instagram , Facebook , WhatsApp and other social medias in one go",
   "dir": "ltr",
   "display": "standalone",
-  "name": "Arth Quote maker for Instagram",
+  "name": "Sparkle Story Quote maker for Instagram",
   "orientation": "portrait",
   "scope": "/",
   "short_name": "Arth",
