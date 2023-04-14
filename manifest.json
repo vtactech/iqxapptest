@@ -11,7 +11,13 @@
   "theme_color": "#942c51",
   "categories": [],
   "screenshots": [],
-  "icons": [],
-  "shortcuts": [],
+  "icons": [
+{
+      "src": "https://vtactech.github.io/vtacapp/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose" : "any"
+    }
+],
   "lang": "en"
 }
